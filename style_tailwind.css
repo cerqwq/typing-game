@@ -1,0 +1,381 @@
+/* =============================================
+   TAILWIND CSS — Custom Styles
+   Dark Editorial + Warm Amber
+   ============================================= */
+
+/* Selection */
+::selection {
+    background: #e8a84c;
+    color: #0a0a0b;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111113;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e8a84c;
+    border-radius: 3px;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #e8a84c #111113;
+}
+
+/* =============================================
+   GRAIN OVERLAY
+   ============================================= */
+.grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+}
+
+/* =============================================
+   CUSTOM CURSOR
+   ============================================= */
+.cursor-dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: #e8a84c;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+}
+
+.cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid #e8a84c;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    opacity: 0.4;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s;
+}
+
+.cursor-dot.hover {
+    width: 12px;
+    height: 12px;
+    background: #f0c078;
+}
+
+.cursor-ring.hover {
+    width: 50px;
+    height: 50px;
+    opacity: 0.2;
+}
+
+@media (max-width: 768px) {
+    .cursor-dot,
+    .cursor-ring {
+        display: none;
+    }
+}
+
+/* =============================================
+   LOADER
+   ============================================= */
+#loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+.navbar.scrolled {
+    padding: 12px 0;
+    background: rgba(10, 10, 11, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav-link.active {
+    color: #e8a84c;
+}
+
+.nav-link::after {
+    display: none;
+}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(10, 10, 11, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+        padding: 12px 24px;
+    }
+
+    .nav-external {
+        margin-left: 0;
+        margin-top: 16px;
+    }
+
+    .menu-toggle {
+        display: flex !important;
+    }
+
+    .menu-toggle.active span:first-child {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:last-child {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+}
+
+/* =============================================
+   HERO IMAGE HOVER
+   ============================================= */
+.hero-image-wrap:hover .hero-image-deco {
+    top: -8px;
+    right: -8px;
+    opacity: 0.4;
+}
+
+/* =============================================
+   PROJECT OVERLAY
+   ============================================= */
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+/* =============================================
+   BACK TO TOP
+   ============================================= */
+#backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* =============================================
+   GSAP REVEAL ANIMATIONS
+   ============================================= */
+.gsap-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.gsap-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =============================================
+   PARTICLE CANVAS
+   ============================================= */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* =============================================
+   SMOOTH HOVER EFFECTS
+   ============================================= */
+a, button {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #e8a84c;
+    outline-offset: 2px;
+}
+
+/* =============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================= */
+@media (max-width: 480px) {
+    .hero-section {
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .hero-image-wrap {
+        width: 220px;
+    }
+
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .hero-stat {
+        flex: 1;
+        min-width: 80px;
+    }
+
+    .projects-filter {
+        gap: 6px;
+    }
+
+    .filter-btn {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+
+    .contact-form-wrap {
+        padding: 24px;
+    }
+
+    #backToTop {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .scroll-hint {
+        display: none;
+    }
+}
+
+/* =============================================
+   LOADING ANIMATION
+   ============================================= */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* =============================================
+   MAGNETIC BUTTON EFFECT
+   ============================================= */
+.magnetic-btn {
+    position: relative;
+    display: inline-block;
+}
+
+.magnetic-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* =============================================
+   TEXT GRADIENT EFFECT
+   ============================================= */
+.text-gradient {
+    background: linear-gradient(135deg, #e8a84c, #f0c078);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* =============================================
+   GLASS MORPHISM
+   ============================================= */
+.glass {
+    background: rgba(22, 22, 24, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* =============================================
+   ANIMATED BORDER
+   ============================================= */
+.animated-border {
+    position: relative;
+}
+
+.animated-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, #e8a84c, #4ecdc4, #e8a84c);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.animated-border:hover::before {
+    opacity: 1;
+}
+
+/* =============================================
+   PARALLAX HELPER
+   ============================================= */
+.parallax-layer {
+    will-change: transform;
+}
+
+/* =============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================= */
+.gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .gsap-reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+    #particleCanvas {
+        display: none;
+    }
+}
